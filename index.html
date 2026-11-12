@@ -1,190 +1,741 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NASA Hunch Acts</title>
-    <style>
-        :root {
-            --black: #000000;
-            --dark-gray: #2f2f2f;
-            --accent: #e6302f;
-        }
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="theme-color" content="#171717">
+	<title>ACTS | NASA HUNCH 2026-27</title>
+	<style>
+		:root {
+			color-scheme: dark;
+			--ink: #171717;
+			--panel: #222222;
+			--panel-raised: #2b2b2b;
+			--paper: #f4f4f2;
+			--muted: #a7a7a4;
+			--line: rgba(255, 255, 255, 0.12);
+			--accent: #e6302f;
+			--radius: 1.25rem;
+			--content-width: 74rem;
+		}
 
-        * {
-            box-sizing: border-box;
-        }
+		*,
+		*::before,
+		*::after {
+			box-sizing: border-box;
+		}
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            background: var(--dark-gray);
-            color: var(--black);
-            font-family: Arial, sans-serif;
-        }
+		html {
+			scroll-behavior: smooth;
+			scroll-padding-top: 6.5rem;
+		}
 
-        h1 {
-            margin: 1rem 0 0;
-            height: 122px;
-            padding: 2rem 1rem;
-            background: var(--black);
-            color: var(--black);
-            text-align: center;
-            font-size: 4rem;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            border-top: 6px solid var(--accent);
-            border-bottom: 6px solid var(--accent);
-            -webkit-text-stroke: 2px var(--accent);
-            text-shadow:
-                2px 0 var(--accent),
-                -2px 0 var(--accent),
-                0 2px var(--accent),
-                0 -2px var(--accent);
-        }
+		body {
+			min-width: 320px;
+			margin: 0;
+			background: var(--ink);
+			color: var(--paper);
+			font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+			line-height: 1.6;
+		}
 
-        .title-subtitle {
-            margin: 0.25rem 0 0;
-            padding: 0;
-            background: transparent;
-            color: var(--accent);
-            text-align: center;
-            font-size: 1rem;
-            font-weight: normal;
-            -webkit-text-stroke: 0;
-            text-shadow: none;
-        }
+		a {
+			color: inherit;
+		}
 
-        h2 {
-            margin: 0;
-            height: 80px;
-            flex: 1;
-            padding: 1rem;
-            background: var(--accent);
-            color: var(--black);
-            text-align: center;
-            font-size: 1.5rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border-top: 6px solid var(--black);
-            border-bottom: 6px solid var(--black);
-        }
+		.site-header {
+			position: sticky;
+			z-index: 10;
+			top: 0;
+			border-bottom: 1px solid var(--line);
+			background: rgba(23, 23, 23, 0.9);
+			backdrop-filter: blur(18px);
+		}
 
-        .subtitle-row {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            max-width: 900px;
-            margin: 1rem auto 0;
-            padding: 0 1rem;
-        }
+		.nav-wrap,
+		main,
+		.footer-inner {
+			width: min(100% - 2.5rem, var(--content-width));
+			margin-inline: auto;
+		}
 
-        .text-section {
-            width: auto;
-            min-width: 0;
-            max-width: none;
-            flex: 1 1 0;
-            margin: 50px 200px 0 50px;
-            padding: 1rem;
-            background: var(--black);
-            text-align: left;
-            border-top: 6px solid var(--accent);
-            border-bottom: 6px solid var(--accent);
-        }
+		.nav-wrap {
+			display: flex;
+			min-height: 4.75rem;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1.5rem;
+		}
 
-        .text-section.right {
-            margin-left: 200px;
-            margin-right: 50px;
-        }
+		.brand {
+			display: inline-flex;
+			align-items: center;
+			gap: 0.7rem;
+			text-decoration: none;
+			font-size: 0.85rem;
+			font-weight: 800;
+			letter-spacing: 0.1em;
+			text-transform: uppercase;
+		}
 
-        .text-sections-row {
-            display: flex;
-            flex-direction: column;
-            width: 100%;
-        }
+		.brand-mark {
+			display: grid;
+			width: 2rem;
+			aspect-ratio: 1;
+			place-items: center;
+			border-radius: 0.65rem;
+			background: var(--accent);
+			color: white;
+			font-size: 0.9rem;
+		}
 
-        .text-section h2 {
-            width: fit-content;
-            margin: 0 0 1rem;
-            padding: 0 0 1rem;
-            background: transparent;
-            color: var(--accent);
-            border: 0;
-            border-bottom: 3px dashed var(--accent);
-        }
+		.nav-links {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: center;
+			justify-content: flex-end;
+			gap: 0.4rem;
+		}
 
-        .text-section p {
-            max-width: 900px;
-            margin: 0;
-            color: #ffffff;
-            font-size: 1rem;
-            line-height: 1.5;
-        }
+		.nav-links a {
+			padding: 0.6rem 0.9rem;
+			border: 1px solid transparent;
+			border-radius: 999px;
+			color: #c9c9c6;
+			font-size: 0.88rem;
+			font-weight: 650;
+			text-decoration: none;
+			transition: background-color 160ms ease, border-color 160ms ease, color 160ms ease;
+		}
 
-        .logo-box {
-            flex: 0 0 80px;
-            width: 80px;
-            height: 80px;
-            background: #ffffff;
-            border: 6px solid var(--accent);
-        }
+		.nav-links a:hover,
+		.nav-links a:focus-visible {
+			border-color: var(--line);
+			background: var(--panel);
+			color: white;
+		}
 
-        .logo-box img {
-            display: block;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-        }
+		.nav-links .active {
+			background: var(--accent);
+			color: white;
+		}
 
-        @media (max-width: 600px) {
-            .subtitle-row {
-                gap: 0.5rem;
-                padding: 0 0.5rem;
-            }
+		.hero {
+			position: relative;
+			display: grid;
+			min-height: clamp(24rem, 58vw, 38rem);
+			align-content: end;
+			overflow: hidden;
+			margin-top: 1.5rem;
+			padding: clamp(1.5rem, 6vw, 4.75rem);
+			border: 1px solid var(--line);
+			border-radius: calc(var(--radius) + 0.5rem);
+			background:
+				radial-gradient(ellipse at 78% 22%, rgba(230, 48, 47, 0.25), transparent 32%),
+				linear-gradient(135deg, #303030, #1d1d1d 58%, #171717);
+		}
 
-            .logo-box {
-                flex-basis: 60px;
-                width: 60px;
-                height: 60px;
-            }
+		.hero::before,
+		.hero::after {
+			position: absolute;
+			z-index: 0;
+			content: "";
+			pointer-events: none;
+		}
 
-            h2 {
-                font-size: 1rem;
-            }
-        }
-    </style>
+		.hero::before {
+			top: 9%;
+			right: 8%;
+			width: clamp(8rem, 22vw, 17rem);
+			aspect-ratio: 1;
+			border: 1px solid rgba(255, 255, 255, 0.2);
+			border-radius: 50%;
+			box-shadow: 0 0 0 1.2rem rgba(255, 255, 255, 0.025), 0 0 0 2.4rem rgba(255, 255, 255, 0.02);
+		}
+
+		.hero::after {
+			top: 17%;
+			right: 16%;
+			width: clamp(3rem, 9vw, 7rem);
+			aspect-ratio: 1;
+			border: 1px solid rgba(230, 48, 47, 0.8);
+			border-radius: 1.2rem;
+			transform: rotate(35deg);
+		}
+
+		.hero-content {
+			position: relative;
+			z-index: 1;
+			max-width: 48rem;
+		}
+
+		.eyebrow {
+			display: inline-flex;
+			width: fit-content;
+			max-width: 100%;
+			align-items: center;
+			gap: 0.6rem;
+			margin: 0 0 1.2rem;
+			color: #ff7774;
+			font-size: 0.75rem;
+			font-weight: 800;
+			letter-spacing: 0.16em;
+			text-transform: uppercase;
+			transform: none;
+		}
+
+		.eyebrow::before {
+			flex: 0 0 1.5rem;
+			width: 1.5rem;
+			height: 2px;
+			background: var(--accent);
+			content: "";
+		}
+
+		h1,
+		h2,
+		h3,
+		p {
+			margin-top: 0;
+		}
+
+		h1 {
+			max-width: 14ch;
+			margin-bottom: 1rem;
+			font-size: clamp(2.6rem, 8vw, 5.6rem);
+			font-weight: 780;
+			letter-spacing: -0.065em;
+			line-height: 0.98;
+		}
+
+		.hero-copy {
+			max-width: 44rem;
+			margin-bottom: 1.7rem;
+			color: #c2c2bf;
+			font-size: clamp(1rem, 2vw, 1.15rem);
+		}
+
+		.hero-actions {
+			display: flex;
+			flex-wrap: wrap;
+			gap: 0.75rem;
+		}
+
+		.button {
+			display: inline-flex;
+			min-height: 2.9rem;
+			align-items: center;
+			justify-content: center;
+			padding: 0.7rem 1.1rem;
+			border: 1px solid var(--line);
+			border-radius: 999px;
+			background: rgba(255, 255, 255, 0.04);
+			color: white;
+			font-size: 0.9rem;
+			font-weight: 700;
+			text-decoration: none;
+			transition: transform 160ms ease, background-color 160ms ease;
+		}
+
+		.button:hover {
+			transform: translateY(-
+
+NASA Hunch 2026-2027
+A.C.T.S
+
+-semi- Automated Cargo Transport System
+
+01 / Project summary
+Project overview
+Project Goal
+
+Our goal is to create a semi autonomous system that can safely transport and deliver a storage container over a long distance in a hazardous climate.
+Project Requirements
+
+    Move a 2 ft cargo container from landing to moon base
+    Work in 1/6th gravity
+    up to 40ft travel distance
+    able to create sealed connection with base for retrieving cargo
+
+Project details
+
+For our project, we plan on designing a prototype vehicle that will utilize a tightening screw mechanism with high friction pads attached to the ends, similar to a common vice clamp but with the durability of the cargo taken into further consideration. To allow the robot to move we plan on using wheels similar to the design used on existing lunar robots as shown below as they are long lasting and require minimal to no maintenance. Once the clamp mechanism has attached to the cargo container, a similar mechanism also using a platform moving along screw will be used to raise the cargo container up to the robot to provide ground clearance.
+
+[Cad image/images template]2px);
+			background: rgba(255, 255, 255, 0.1);
+		}
+
+		.button.primary {
+			border-color: var(--accent);
+			background: var(--accent);
+		}
+
+		.section {
+			padding-block: clamp(3.5rem, 8vw, 6rem);
+		}
+
+		.section-heading {
+			display: flex;
+			align-items: end;
+			justify-content: space-between;
+			gap: 1.5rem;
+			margin-bottom: 1.5rem;
+		}
+
+		.section-heading h2 {
+			margin-bottom: 0;
+			font-size: clamp(1.8rem, 4vw, 2.6rem);
+			letter-spacing: -0.045em;
+			line-height: 1.1;
+		}
+
+		.section-index {
+			color: var(--muted);
+			font-size: 0.78rem;
+			font-weight: 750;
+			letter-spacing: 0.14em;
+		}
+
+		.overview-grid {
+			display: grid;
+			grid-template-columns: minmax(0, 1.45fr) minmax(15rem, 0.75fr);
+			gap: 1rem;
+		}
+
+		.card {
+			min-width: 0;
+			padding: clamp(1.25rem, 3vw, 2rem);
+			border: 1px solid var(--line);
+			border-radius: var(--radius);
+			background: var(--panel);
+		}
+
+		.card h3 {
+			margin-bottom: 0.75rem;
+			font-size: 1.15rem;
+			letter-spacing: -0.02em;
+		}
+
+		.placeholder {
+			margin: 0;
+			color: #c7c7c4;
+			line-height: 1.75;
+		}
+
+		.facts {
+			display: grid;
+			gap: 0;
+			margin: 0;
+		}
+
+		.facts div {
+			display: grid;
+			grid-template-columns: minmax(5.5rem, 0.7fr) minmax(0, 1fr);
+			gap: 1rem;
+			padding-block: 0.8rem;
+			border-bottom: 1px solid var(--line);
+		}
+
+		.facts div:first-child {
+			padding-top: 0;
+		}
+
+		.facts div:last-child {
+			padding-bottom: 0;
+			border-bottom: 0;
+		}
+
+		.facts dt {
+			color: var(--muted);
+			font-size: 0.85rem;
+		}
+
+		.facts dd {
+			margin: 0;
+			color: var(--paper);
+			font-size: 0.9rem;
+			font-weight: 650;
+			text-align: right;
+		}
+
+		.media-placeholder {
+			display: grid;
+			min-height: clamp(15rem, 38vw, 27rem);
+			place-items: center;
+			overflow: hidden;
+			border: 1px dashed rgba(255, 255, 255, 0.25);
+			border-radius: calc(var(--radius) - 0.25rem);
+			background:
+				linear-gradient(135deg, transparent 49.8%, rgba(255, 255, 255, 0.08) 50%, transparent 50.2%),
+				linear-gradient(45deg, transparent 49.8%, rgba(255, 255, 255, 0.08) 50%, transparent 50.2%),
+				var(--panel-raised);
+			color: #d1d1ce;
+			font-size: 0.9rem;
+			font-weight: 700;
+		}
+
+		.media-card {
+			margin-top: 1rem;
+			padding: 0.75rem;
+		}
+
+		.media-card figcaption {
+			padding: 0.8rem 0.4rem 0.25rem;
+			color: var(--muted);
+			font-size: 0.82rem;
+		}
+
+		.details-grid {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1rem;
+		}
+
+		.detail-card {
+			position: relative;
+			min-height: 13rem;
+			overflow: hidden;
+		}
+
+		.detail-card::after {
+			position: absolute;
+			right: -1.6rem;
+			bottom: -1.6rem;
+			width: 5rem;
+			aspect-ratio: 1;
+			border: 1px solid rgba(230, 48, 47, 0.55);
+			border-radius: 50%;
+			content: "";
+		}
+
+		.card-kicker {
+			display: block;
+			margin-bottom: 1rem;
+			color: #ff7774;
+			font-size: 0.72rem;
+			font-weight: 800;
+			letter-spacing: 0.12em;
+			text-transform: uppercase;
+		}
+
+		.process-list {
+			display: grid;
+			grid-template-columns: repeat(3, minmax(0, 1fr));
+			gap: 1rem;
+			margin: 0;
+			padding: 0;
+			list-style: none;
+		}
+
+		.process-step {
+			padding: 1.4rem;
+			border-top: 2px solid var(--accent);
+			border-radius: 0 0 var(--radius) var(--radius);
+			background: var(--panel);
+		}
+
+		.step-number {
+			display: block;
+			margin-bottom: 1.2rem;
+			color: #ff7774;
+			font-size: 0.78rem;
+			font-weight: 800;
+			letter-spacing: 0.12em;
+		}
+
+		.process-step h3 {
+			margin-bottom: 0.6rem;
+			font-size: 1.05rem;
+		}
+
+		.process-step p {
+			margin-bottom: 0;
+			color: #c7c7c4;
+			font-size: 0.92rem;
+		}
+
+		.closing-card {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 2rem;
+			padding: clamp(1.5rem, 5vw, 3rem);
+			border-radius: calc(var(--radius) + 0.25rem);
+			background: var(--paper);
+			color: var(--ink);
+		}
+
+		.closing-card h2 {
+			margin-bottom: 0.7rem;
+			font-size: clamp(1.7rem, 4vw, 2.5rem);
+			letter-spacing: -0.045em;
+			line-height: 1.1;
+		}
+
+		.closing-card p {
+			max-width: 38rem;
+			margin-bottom: 0;
+			color: #545452;
+		}
+
+		.closing-card .button {
+			flex: 0 0 auto;
+			border-color: var(--accent);
+			background: var(--accent);
+		}
+
+		footer {
+			border-top: 1px solid var(--line);
+			color: var(--muted);
+			font-size: 0.82rem;
+		}
+
+		.footer-inner {
+			display: flex;
+			min-height: 5rem;
+			align-items: center;
+			justify-content: space-between;
+			gap: 1rem;
+		}
+
+		.footer-inner p {
+			margin: 0;
+		}
+
+		:focus-visible {
+			outline: 3px solid #ff7774;
+			outline-offset: 3px;
+		}
+
+		@media (max-width: 760px) {
+			.nav-wrap {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 0.6rem;
+				padding-block: 0.8rem;
+			}
+
+			.nav-links {
+				width: 100%;
+				justify-content: flex-start;
+			}
+
+			.nav-links a {
+				padding: 0.5rem 0.7rem;
+				font-size: 0.82rem;
+			}
+
+			.overview-grid {
+				grid-template-columns: 1fr;
+			}
+
+			.details-grid,
+			.process-list {
+				grid-template-columns: repeat(2, minmax(0, 1fr));
+			}
+		}
+
+		@media (max-width: 520px) {
+			.nav-wrap,
+			main,
+			.footer-inner {
+				width: min(100% - 1.25rem, var(--content-width));
+			}
+
+			.hero {
+				min-height: 29rem;
+				margin-top: 0.75rem;
+			}
+
+			.hero::before {
+				top: 8%;
+				right: 9%;
+			}
+
+			.section-heading {
+				align-items: flex-start;
+				flex-direction: column;
+				gap: 0.6rem;
+			}
+
+			.details-grid,
+			.process-list {
+				grid-template-columns: 1fr;
+			}
+
+			.detail-card {
+				min-height: auto;
+			}
+
+			.closing-card,
+			.footer-inner {
+				align-items: flex-start;
+				flex-direction: column;
+			}
+
+			.footer-inner {
+				justify-content: center;
+				padding-block: 1.2rem;
+			}
+		}
+
+		@media (prefers-reduced-motion: reduce) {
+			*,
+			*::before,
+			*::after {
+				scroll-behavior: auto !important;
+				transition-duration: 0.01ms !important;
+			}
+		}
+	</style>
 </head>
-
 <body>
-    <header>
-        <h1>
-            <span>A.C.T.S.</span>
-            <div class="title-subtitle">(semi) Autonomous Cargo Transport System</div>
-        </h1>
-        <div class="subtitle-row">
-            <div class="logo-box" aria-label="Left logo placeholder"></div>
-            <h2>NASA HUNCH 2026-27 External Cargo Robot Team</h2>
-            <div class="logo-box" aria-label="Right logo">
-                <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSSZ0hGxvMwLWxLVGfxwCT8qhbjoe-SKo7Vc9R2t-NDZ3sdLJn975lURbvj&amp;s=10"
-                    alt="Right logo">
-            </div>
-        </div>
-        <div class="text-sections-row">
-            <section class="text-section">
-                <h2>Our Goal:</h2>
-                <p>Design an autonomous cargo robot that can safely transport and deliver a storage container over a long
-                    distance in a hazardous climate.</p>
-            </section>
-            <section class="text-section right">
-                <h2>About Us:</h2>
-                <p>About the team behind making all this work.</p>
-            </section>
-        </div>
-    </header>
-</body>
+	<header class="site-header">
+		<div class="nav-wrap">
+			<a class="brand" href="SiteMain.html" aria-label="Engineering project main page">
+				
+				
+			</a>
+			<nav class="nav-links" aria-label="Main navigation">
+				<a class="active" href="SiteMain.html" aria-current="page">Main page</a>
+				<a href="SiteAbtUs.html">About us</a>
+			</nav>
+		</div>
+	</header>
 
+	<main>
+		<section class="hero" aria-labelledby="project-title">
+			<div class="hero-content">
+				<p class="eyebrow">NASA Hunch 2026-2027</p>
+				<h1 id="project-title">A.C.T.S</h1>
+				<p class="hero-copy">-semi- Automated Cargo Transport System</p>
+				<div class="hero-actions">
+				</div>
+			</div>
+		</section>
+
+		<section class="section" id="overview" aria-labelledby="overview-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">01 / Project summary</p>
+					<h2 id="overview-title">Project overview</h2>
+				</div>
+			</div>
+			<div class="overview-grid">
+				<article class="card">
+					<h3>Project Goal</h3>
+					<p class="placeholder">Our goal is to create a semi autonomous system that can safely transport and deliver a storage container over a long distance in a hazardous climate.</p>
+					<hr>
+					<h3>Project Requirements</h3>
+					<ul class="placeholder">
+						<li>Move a 2 ft cargo container from landing to moon base</li>
+						<li>Work in 1/6th gravity</li>
+						<li>up to 40ft travel distance</li>
+						<li>able to create sealed connection with base for retrieving cargo</li>
+					</ul>
+				</article>
+				</article>
+				<aside class="card" aria-label="Project details">
+					<h3>Project details</h3>
+					<dl class="facts">
+						 <p>
+							For our project, we plan on designing a prototype vehicle that will utilize a tightening screw mechanism with high friction pads attached to the ends, similar to a common vice clamp but with the durability of the cargo taken into further consideration. To allow the robot to move we plan on using wheels similar to the design used on existing lunar robots as shown below as they are long lasting and require minimal to no maintenance.  Once the clamp mechanism has attached to the cargo container, a similar mechanism also using a platform moving along screw will be used to raise the cargo container up to the robot to provide ground clearance. 
+						 </p>
+					</dl>
+				</aside>
+			</div>
+			<figure class="card media-card">
+				<div class="media-placeholder" role="img" aria-label="Project image placeholder">[Cad image/images template]</div>
+				<figcaption>Our current design for the A.C.T.S rover frame & clamp mechanism</figcaption>
+			</figure>
+		</section>
+
+		<section class="section" id="challenge" aria-labelledby="challenge-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">02 / Design Choices</p>
+					<h2 id="challenge-title">Project Research</h2>
+				</div>
+				<span class="section-index">Why we chose the parts and mechanisms we did over other commonly used options:</span>
+			</div>
+			<div class="details-grid">
+				<article class="card detail-card">
+					<h3>Vice Clamp for carrying Cargo:</h3>
+					<ul class="placeholder">
+						<li>Able to handle a larger load while having lower torque applied to the structure of the mechanism.</li>
+						<li>Less vulnerable to degrading in lunar dust than a mechanism with a high number of joints.</li>
+						<li>Only requires one motor/overall mechanically simple.</li>
+						<li>Low complexity mechanism for if repairs are needed.</li>
+					</ul>
+					<hr class="card-kicker">
+				</article>
+				<article class="card detail-card">
+					<h3>Hollow solid tires:</h3>
+					<ul class="placeholder">
+						<li>Degrade slower than common rubber tires.</li>
+						<li>Provide better traction on lunar surface.</li>
+						<li>Do not have any joints or areas that would be rapidly degraded by lunar dust unlike tracks or robotic legs.</li>
+						<li>Do not need to hold pressure unlike common rubber tires.</li>
+						<li>Much lighter than common tires for ease of transport.</li>
+					</ul>	
+					<hr class="card-kicker">
+				</article>
+				<article class="card detail-card">
+					<h3>Other parts chosen and reasons why:</h3>
+					<ul class="placeholder">
+						<li>Raspberry PI for wireless communication with prototype as it can easily process information to enact a planned route without requiring wireless communication once a route is provided. </li>
+						<li>Rechargeable batteries so the robot does not need to be disassembled to replace them unless battery health is critical.</li>
+						<li>A basic solar panel array will be included so that batteries can be recharged away from the lunar base if needed.</li>
+					</ul>
+					<hr class="card-kicker">
+				</article>
+			</div>
+		</section>
+
+		<section class="section" id="approach" aria-labelledby="approach-title">
+			<div class="section-heading">
+				<div>
+					<p class="eyebrow">03 / Development</p>
+					<h2 id="approach-title">Our approach</h2>
+				</div>
+				<span class="section-index">Our process for developing the A.C.T.S robot</span>
+			</div>
+			<ol class="process-list">
+				<li class="process-step">
+					<span class="step-number">CAD design process</span>
+					<h3>[textbox]</h3>
+					<p>[textbox]</p>
+				</li>
+				<li class="process-step">
+					<span class="step-number">Electrical diagrams & Software</span>
+					<h3>[textbox]</h3>
+					<p>[textbox]</p>
+				</li>
+				<li class="process-step">
+					<span class="step-number">Assembly, Testing, and Final choices</span>
+					<h3>[textbox]</h3>
+					<p>[textbox]</p>
+				</li>
+			</ol>
+		</section>
+
+		<section class="section" aria-labelledby="outcome-title">
+			<div class="closing-card">
+				<div>
+					<p class="eyebrow">04 / Other Project Information</p>
+					<h2 id="outcome-title">External links</h2>
+					<p>[Other Links]</p>
+				</div>
+				<a class="button" href="https://github.com/OwenVWest/ACTSNasaHunch2026-27">Our Github <span aria-hidden="true">&nbsp;↗</span></a>
+			</div>
+		</section>
+	</main>
+
+	<footer>
+		<div class="footer-inner">
+			<p>[ACTS Logo]</p>
+			<p>[NASA Hunch Logo]</p>
+		</div>
+	</footer>
+</body>
 </html>
