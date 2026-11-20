@@ -70,6 +70,13 @@
 			text-transform: uppercase;
 		}
 
+		.brand-logo {
+			width: 2.25rem;
+			height: 2.25rem;
+			border-radius: 5%;
+			object-fit: contain;
+		}
+
 		.brand-mark {
 			display: grid;
 			width: 2rem;
@@ -501,7 +508,7 @@
 			height: 5rem;
 			margin-left: auto;
 			border: 1px solid var(--line);
-			border-radius: 1rem;
+			border-radius: 5%;
 			background: white;
 			object-fit: contain;
 		}
@@ -522,6 +529,14 @@
 
 		.footer-inner p {
 			margin: 0;
+		}
+
+		.footer-logo {
+			display: block;
+			width: 3.5rem;
+			height: 3.5rem;
+			border-radius: 5%;
+			object-fit: contain;
 		}
 
 		:focus-visible {
